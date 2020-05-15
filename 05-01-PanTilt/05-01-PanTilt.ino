@@ -17,8 +17,8 @@
 #include <PIDLoop.h>
 
 Pixy2 pixy;
-PIDLoop panLoop(-200, 0, -200, true);
-PIDLoop tiltLoop(200, 0, 200, true);
+PIDLoop panLoop(150, 0, 200, true);
+PIDLoop tiltLoop(-200, 0, -100, true);
 
 /////////////////////////////////////
 

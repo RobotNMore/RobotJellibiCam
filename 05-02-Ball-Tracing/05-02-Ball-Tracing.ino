@@ -24,8 +24,8 @@ JellibiButton _downButton;
 
 Pixy2 pixy;
 
-PIDLoop panLoop(-200, 0, -200, true);
-PIDLoop tiltLoop(200, 0, 200, true);
+PIDLoop panLoop(150, 0, 200, true);
+PIDLoop tiltLoop(-200, 0, -100, true);
 
 PIDLoop turnLoop(400, 0, 400, false);
 PIDLoop gobackLoop(400, 0, 400, false);
@@ -129,7 +129,7 @@ void setup()
   pixy.init();
   pixy.changeProg("color_connected_components"); // cf) "line_tracking"
   
-  pixy.setServos(420, 200); // 팬/틸트 서보를 중앙 위치로
+  pixy.setServos(550, 800); // 팬/틸트 서보를 중앙 위치로
 }
 
 
@@ -277,7 +277,7 @@ void loop()
     }
     else  // 작으면, 멀어졌으므로 공 따라가기 (전진/좌회전/우회전)
     {
-      Drive2( right, left );
+      Drive2( left, right );
     }
   }
 }

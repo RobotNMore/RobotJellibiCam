@@ -24,7 +24,7 @@ JellibiButton _downButton;
 
 Pixy2   pixy; // Pixy2 카메라 선언
 
-PIDLoop panLoop(-200, 0, -200, true); // Pan 서보 (P,I,D,bServo)
+PIDLoop panLoop(200, 0, 200, true); // Pan 서보 (P,I,D,bServo)
 PIDLoop tiltLoop(200, 0, 200, true); // Tilt 서보 (P,I,D,bServo)
 
 PIDLoop leftRightLoop(400, 0, 400, false); // 좌회전/우회전 제어
@@ -159,7 +159,7 @@ void loop()
   // DOWN 버튼: 카메라만 따라서 움직일지 로봇까지 따라다닐지 선택
   if( _downButton.Check() )
   {
-    bDrive = ~bDrive;
+    bDrive = !bDrive;
     Stop();
     return;
   }
@@ -193,7 +193,7 @@ void loop()
   
   // 카메라 이미지에서 인식된 물체의 Pan/Tilt 변화량 계산
   panOffset = (int32_t) pixy.frameWidth / 2 - (int32_t) block->m_x;
-  tiltOffset = (int32_t) block->m_y - (int32_t) pixy.frameHeight / 2;
+  tiltOffset = (int32_t) pixy.frameHeight / 2 - (int32_t) block->m_y;
 
   // 서보 팬/틸트 변화량 반영
   panLoop.update( panOffset );
@@ -247,7 +247,7 @@ void loop()
     }
     else  // 작으면, 멀어졌으므로 공 따라가기 (전진/좌회전/우회전)
     {
-      Drive2( right, left );
+      Drive2( left, right );
     }
   }
 }

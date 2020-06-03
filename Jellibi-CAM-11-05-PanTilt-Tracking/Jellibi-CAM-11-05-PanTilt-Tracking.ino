@@ -19,7 +19,7 @@
 Pixy2   pixy; // Pixy2 카메라 선언
 
 // PID 제어 클래스 (P, I, D, bServo)
-PIDLoop panLoop(-200, 0, -200, true);
+PIDLoop panLoop(200, 0, 200, true);
 PIDLoop tiltLoop(200, 0, 200, true);
 
 /////////////////////////////////////////
@@ -50,7 +50,7 @@ void loop()
     // 인식된 사물은 큰 것부터 크기 순으로 차례로 저장되며,
     // 여기서는 제일 큰 첫 번째, 즉 [0]번째 사물의 위치 변동에 대해서만 처리한다.
     panOffset = (int32_t) pixy.frameWidth / 2 - (int32_t) pixy.ccc.blocks[0].m_x;
-    tiltOffset = (int32_t) pixy.ccc.blocks[0].m_y - (int32_t) pixy.frameHeight / 2;  
+    tiltOffset = (int32_t) pixy.frameHeight / 2 - (int32_t) pixy.ccc.blocks[0].m_y;
 
     panLoop.update(panOffset);    // Pan쪽 정보 반영 업데이트
     tiltLoop.update(tiltOffset);  // Tilt쪽 정보 반영 업데이트

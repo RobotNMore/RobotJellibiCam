@@ -120,7 +120,7 @@ void loop()
   else if( res & LINE_VECTOR ) // 벡터 정보에 라인이 감지됨
   {
     // 앞으로 나아가는 벡터의 끝인 m_x1에 대한 변이값 계산
-    int error = (int32_t) pixy.line.vectors->m_x1 - (int32_t) X_CENTER;
+    int error = (int32_t) X_CENTER - (int32_t) pixy.line.vectors->m_x1;
     headingLoop.update( error );  // heading error에 대해 PID 계산 반영
 
     // heading을 왼쪽과 오른쪽 속력 성분으로 분리
@@ -147,6 +147,6 @@ void loop()
       right -= SPEED_SLOW;  
     }
     
-    Drive2( right, left );  // 실제 주행속도(모터회전) 조정
+    Drive2( left, right );  // 실제 주행속도(모터회전) 조정
   }
 }

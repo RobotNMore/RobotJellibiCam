@@ -162,7 +162,7 @@ void loop()
         delay( 150 );
         noTone( pinBuzzer ); // 음소거(mute)
         
-        Drive2( SPEED_FAST, SPEED_FAST*2/3  ); // 완만한 우회전
+        Drive2( SPEED_FAST, SPEED_FAST*2/3 ); // 완만한 우회전
         delay( 500 ); // (대기 시간은 모터 성능에 따라 조정 필요)
         Drive2( SPEED_FAST, 0 ); // 다음에 우회전이 쉽게 되도록
         delay( 800 );            // 미리 살짝 우회전 시켜둔다.

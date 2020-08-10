@@ -2,11 +2,11 @@
  
 Servo myservo;
 
-#define pinServo = 5;  // 서보모터 핀 번호
+#define pinServo 5  // 서보모터 핀 번호
 
 void setup() 
 { 
-  myservo.attach(servoPin); // 서보모터 연결
+  myservo.attach(pinServo); // 서보모터 연결
 } 
  
 void loop() 
